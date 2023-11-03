@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from "react";
 import debounce from "lodash/debounce";
 import Loading from "../Loading/Loading";
@@ -16,6 +16,10 @@ export function Table() {
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
 
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm]);
+
   const filteredData = data
     ? data.filter((satellite) =>
         satellite.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -25,7 +29,7 @@ export function Table() {
   const itemsToDisplay = filteredData.slice(startIndex, endIndex);
 
   const totalPages = Math.ceil(
-    data && data.length > 0 ? data?.length / itemsPerPage : 1
+    filteredData.length / itemsPerPage
   );
 
   const handleNextPage = () => {
