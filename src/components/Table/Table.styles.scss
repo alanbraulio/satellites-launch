@@ -1,0 +1,45 @@
+.content-table {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+table {
+  width: 50%;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+}
+
+tr,
+td {
+  padding: 10px;
+  text-align: center;
+  max-width: 100px;
+}
+
+thead tr {
+  background-color: #027bf4;
+  color: #fff;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #f0f0f0;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f0f0f050;
+}
+
+.status-launch {
+  color: #fff;
+  border-radius: 20px;
+}
+
+.success-launch {
+  background-color: #026302;
+}
+
+.failed-launch {
+  background-color: #ba0909;
+}
