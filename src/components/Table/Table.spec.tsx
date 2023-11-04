@@ -8,15 +8,16 @@ jest.mock('../../queries/useFetchSatellites');
   
 describe('Table', () => {
     const mockUseFetchSatellites = useFetchSatellites as jest.Mock;
-
-    mockUseFetchSatellites.mockImplementation(() => ({
-        data: satellitesDataMock,
-        isLoading: false,
-        isError: false,
-        refetch: jest.fn(),
-    }));
-
+    beforeEach(() => { 
+        jest.clearAllMocks();
+    })
     it('should render', () => {
+        mockUseFetchSatellites.mockImplementation(() => ({
+            data: satellitesDataMock,
+            isLoading: false,
+            isError: false,
+            refetch: jest.fn(),
+        }));
         render(<Table />);
         const tableContainer = screen.queryByTestId('table-container');
         expect(tableContainer).toBeTruthy();
